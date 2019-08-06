@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Demo from './Demo'
-
+import Demo from './Demo';
+import DemoRedux from './DemoRedux';
 function App() {
   return (
     <div className="App">

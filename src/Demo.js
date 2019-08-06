@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-import { status, sort} from './actions/index';
 var init = {
     status: false,
     sort: {
@@ -43,7 +42,7 @@ var action = { type: 'CHANGESTATUS' };
 store.dispatch(action);
 console.log('CHANGESTATUS', store.getState());
 
-// action sort
+//action sort
 var sortAction = {
     type: 'SORT',
     sort: {
