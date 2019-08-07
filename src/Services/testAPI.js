@@ -58,7 +58,7 @@ export default class ProductList extends React.Component {
       <div style = {{marginLeft : '12px'}}>
         <ul>
           <label>Get API-----------</label>
-          {this.state.nameGet.map(product => <li key={product.id}>{product.name}</li>)}
+          {this.state.nameGet.map(product => <li key={product.id}>name:  {product.name} ------ id: {product.id} ------ price: {product.price}</li>)}
         </ul>
 
         <form onSubmit={this.handleSubmitPost}>
