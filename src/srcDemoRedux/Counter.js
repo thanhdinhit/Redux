@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as types from'./../constants/Type'
 
 class Counter extends React.Component {
   increment = () => {
-    this.props.dispatch({ type: 'INC' });
+    this.props.dispatch({ type: types.INC });
   }
 
   decrement = () => {
-    this.props.dispatch({ type: 'DEC' });
+    this.props.dispatch({ type: types.DEC });
   }
 
   render() {
@@ -24,9 +25,10 @@ class Counter extends React.Component {
   }
 }
 // link state Redux - property(prop) Component
+
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.counts
   };
 }
 

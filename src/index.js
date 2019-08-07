@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
+//import CounterDemo from './CounterDemoNormal';
 import AppDemoRedux from './srcDemoRedux/index'
 import * as serviceWorker from './serviceWorker';
 
