@@ -1,26 +1,83 @@
 import React from 'react';
-
 import axios from 'axios';
 
 export default class ProductList extends React.Component {
   state = {
-    products: [],
+    nameGet: [],
+    name: '',
+    id: ''
   }
   url = 'http://5d4a83cd5c331e00148eb32c.mockapi.io/api'
+
+  // Post method
+  handleChangePost = event => {
+    this.setState({ name: event.target.value });
+  }
+
+  handleSubmitPost = event => {
+    event.preventDefault();
+
+    const namePost = {
+      name: this.state.name
+    };
+
+    axios.post(this.url + '/products', namePost)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+
+  }
+  // Delete method
+
+  handleChangeDelete = event => {
+    this.setState({ id: event.target.value });
+  }
+
+  handleSubmitDelete = event => {
+    event.preventDefault();
+
+    axios.delete(this.url + `products/${this.state.id}`)
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+  //Get method
 
   componentDidMount() {
     axios.get(this.url + '/products')// (https://jsonplaceholder.typicode.com/users)
       .then(res => {
-        const products = res.data;
-        this.setState({ products });
+        const nameGet = res.data;
+        this.setState({ nameGet });
       })
-  }name
+  }
 
   render() {
     return (
-      <ul>
-        {this.state.products.map(product => <li key = {product.id}>{product.name}</li>)}
-      </ul>
+      <div style = {{marginLeft : '12px'}}>
+        <ul>
+          <label>Get API-----------</label>
+          {this.state.nameGet.map(product => <li key={product.id}>{product.name}</li>)}
+        </ul>
+
+        <form onSubmit={this.handleSubmitPost}>
+          <label>
+            Product Name:
+            <input type="text" name="name" onChange={this.handleChangePost} style = {{marginLeft : '12px'}}/>
+          </label>
+          <button type="submit">+ Add +</button>
+        </form>
+
+        <form onSubmit={this.handleSubmitDelete} style = {{marginTop : '20px'}}>
+          <label>
+            Product ID:
+            <input type="text" name="id" onChange={this.handleChangeDelete} style = {{marginLeft : '35px'}}/>
+          </label>
+          <button type="submit">- Delete -</button>
+        </form>
+      </div>
     )
   }
 }
+
